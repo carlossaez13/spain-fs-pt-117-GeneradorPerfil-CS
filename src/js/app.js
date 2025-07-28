@@ -23,29 +23,93 @@ import "../style/index.css";
     }
  */
 function render(variables = {}) {
-  console.log("These are the current variables: ", variables); // print on the console
-  // here we ask the logical questions to make decisions on how to build the html
-  // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
-  let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
-  if (variables.includeCover == false) cover = "<div class='cover'></div>";
+  let cover = "";
+  if (variables.includeCover === false) {
+    cover = '<div class="cover"></div>';
+  } else {
+    let backgroundURL = variables.background;
+    if (!backgroundURL) {
+      backgroundURL = "./assets/img/default-cover.jpg";
+    }
+    cover = `<div class="cover"><img src="${backgroundURL}" /></div>`;
+  }
 
-  // reset the website body with the new html output
-  document.querySelector("#widget_content").innerHTML = `<div class="widget">
-            ${cover}
-          <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
-          </ul>
-        </div>
-    `;
+  let avatar = variables.avatarURL;
+  if (!avatar) {
+    avatar = "./assets/img/default-avatar.png";
+  }
+
+  let name = variables.name;
+  let lastname = variables.lastname;
+
+  if (!name && !lastname) {
+    name = "Name";
+    lastname = "Lastname";
+  } else {
+    if (!name) name = "";
+    if (!lastname) lastname = "";
+  }
+
+  let fullName = name + " " + lastname;
+
+  let role = variables.role;
+  if (!role) {
+    role = "Professional Role";
+  }
+
+  let city = variables.city;
+  let country = variables.country;
+
+  let location = "";
+  if (!city && !country) {
+    location = "City, Country";
+  } else {
+    if (!city) city = "";
+    if (!country) country = "";
+    location = city + ", " + country;
+  }
+
+  let socialMediaPosition = "position-left";
+  if (variables.socialMediaPosition === "right") {
+    socialMediaPosition = "position-right";
+  }
+
+  let twitter = "";
+  if (variables.twitter) {
+    twitter = `<li><a href="https://twitter.com/${variables.twitter}" target="_blank"><i class="fa fa-twitter"></i></a></li>`;
+  }
+
+  let github = "";
+  if (variables.github) {
+    github = `<li><a href="https://github.com/${variables.github}" target="_blank"><i class="fa fa-github"></i></a></li>`;
+  }
+
+  let linkedin = "";
+  if (variables.linkedin) {
+    linkedin = `<li><a href="https://linkedin.com/in/${variables.linkedin}" target="_blank"><i class="fa fa-linkedin"></i></a></li>`;
+  }
+
+  let instagram = "";
+  if (variables.instagram) {
+    instagram = `<li><a href="https://instagram.com/${variables.instagram}" target="_blank"><i class="fa fa-instagram"></i></a></li>`;
+  }
+
+  document.querySelector("#widget_content").innerHTML = `
+    <div class="widget">
+      ${cover}
+      <img src="${avatar}" class="photo" />
+      <h1>${fullName}</h1>
+      <h2>${role}</h2>
+      <h3>${location}</h3>
+      <ul class="${socialMediaPosition}">
+        ${twitter}
+        ${github}
+        ${linkedin}
+        ${instagram}
+      </ul>
+    </div>
+  `;
 }
-
 /**
  * Don't change any of the lines below, here is where we do the logic for the dropdowns
  */
@@ -58,7 +122,7 @@ window.onload = function() {
     // this is the url for the profile avatar
     avatarURL: "https://randomuser.me/api/portraits/women/42.jpg",
     // social media bar position (left or right)
-    socialMediaPosition: "position-left",
+    socialMediaPosition: "left",
     // social media usernames
     twitter: null,
     github: null,
