@@ -78,28 +78,28 @@ function render(variables = {}) {
   if (variables.twitter) {
     twitter = `<li><a href="https://twitter.com/${variables.twitter}" target="_blank"><i class="fa fa-twitter"></i></a></li>`;
   } else {
-    twitter = `<li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>`;
+    twitter = `<li><a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>`;
   }
 
   let github = "";
   if (variables.github) {
     github = `<li><a href="https://github.com/${variables.github}" target="_blank"><i class="fa fa-github"></i></a></li>`;
   } else {
-    github = `<li><a href="#" target="_blank"><i class="fa fa-github"></i></a></li>`;
+    github = `<li><a href="https://github.com" target="_blank"><i class="fa fa-github"></i></a></li>`;
   }
 
   let linkedin = "";
   if (variables.linkedin) {
     linkedin = `<li><a href="https://linkedin.com/in/${variables.linkedin}" target="_blank"><i class="fa fa-linkedin"></i></a></li>`;
   } else {
-    linkedin = `<li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>`;
+    linkedin = `<li><a href="https://linkedin.com" target="_blank"><i class="fa fa-linkedin"></i></a></li>`;
   }
 
   let instagram = "";
   if (variables.instagram) {
     instagram = `<li><a href="https://instagram.com/${variables.instagram}" target="_blank"><i class="fa fa-instagram"></i></a></li>`;
   } else {
-    instagram = `<li><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>`;
+    instagram = `<li><a href="https://instagram.com" target="_blank"><i class="fa fa-instagram"></i></a></li>`;
   }
 
   document.querySelector("#widget_content").innerHTML = `
