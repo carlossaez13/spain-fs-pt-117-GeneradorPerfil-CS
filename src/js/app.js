@@ -77,11 +77,14 @@ function render(variables = {}) {
   let twitter = "";
   if (variables.twitter) {
     twitter = `<li><a href="https://twitter.com/${variables.twitter}" target="_blank"><i class="fa fa-twitter"></i></a></li>`;
+  } else {
+    twitter = `<li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>`;
   }
 
   let github = "";
   if (variables.github) {
     github = `<li><a href="https://github.com/${variables.github}" target="_blank"><i class="fa fa-github"></i></a></li>`;
+  } else {
   }
 
   let linkedin = "";
