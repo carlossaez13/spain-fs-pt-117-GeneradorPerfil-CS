@@ -85,16 +85,21 @@ function render(variables = {}) {
   if (variables.github) {
     github = `<li><a href="https://github.com/${variables.github}" target="_blank"><i class="fa fa-github"></i></a></li>`;
   } else {
+    github = `<li><a href="#" target="_blank"><i class="fa fa-github"></i></a></li>`;
   }
 
   let linkedin = "";
   if (variables.linkedin) {
     linkedin = `<li><a href="https://linkedin.com/in/${variables.linkedin}" target="_blank"><i class="fa fa-linkedin"></i></a></li>`;
+  } else {
+    linkedin = `<li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>`;
   }
 
   let instagram = "";
   if (variables.instagram) {
     instagram = `<li><a href="https://instagram.com/${variables.instagram}" target="_blank"><i class="fa fa-instagram"></i></a></li>`;
+  } else {
+    instagram = `<li><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>`;
   }
 
   document.querySelector("#widget_content").innerHTML = `
